@@ -2278,6 +2278,7 @@ th {
   right: -12vw;
   width: 514px;
   top: 0;
+  z-index: -1;
 }
 @media screen and (min-width: 1600px) {
   .item_page .item_contents .deco_01 {
@@ -2289,7 +2290,6 @@ th {
     width: 220px;
     height: 100px;
     right: -4%;
-    z-index: -1;
   }
 }
 .item_page .item_contents .deco_01 img {
@@ -2402,6 +2402,12 @@ th {
   left: 0;
   top: 0;
   background-size: contain;
+}
+@media screen and (max-width: 440px) {
+  .item_page .item_info .info_container .info_contents .info_contents_line {
+    flex-direction: column;
+    padding: 1.4rem 5px;
+  }
 }
 .item_page .item_info .info_container .info_contents .info_contents_head {
   font-size: 15px;
@@ -2939,6 +2945,7 @@ th {
 .pages_other a {
   display: inline;
   text-decoration: underline;
+  overflow-wrap: break-word;
 }
 .pages_other .term_container {
   display: flex;
@@ -3293,4 +3300,56 @@ th {
 }
 .pages_other .faq_contents .box p {
   font-size: 1.6rem;
+}
+
+.customer {
+  padding: 14rem 0 !important;
+  width: 1000px !important;
+}
+@media screen and (max-width: 440px) {
+  .customer {
+    width: 90% !important;
+    padding: 10rem 0 !important;
+  }
+}
+.customer button {
+  padding: 1rem 2rem !important;
+  border-radius: 1rem !important;
+}
+.customer form .field input {
+  background: #f5f5f5;
+  padding: 5px 1rem;
+  border-radius: 10px;
+}
+.customer form .field a {
+  text-decoration: underline;
+}
+.customer form .field label {
+  left: 13px;
+  top: 5px;
+}
+
+.cart__warnings {
+  padding: 14rem 0 !important;
+}
+.cart__warnings .button {
+  margin-top: 10rem !important;
+  background: #EA5514;
+  padding: 1rem 3rem !important;
+  border-radius: 9px !important;
+}
+@media screen and (max-width: 440px) {
+  .cart__warnings {
+    padding: 10rem 0 !important;
+  }
+}
+
+.title-wrapper-with-link {
+  margin-top: 10rem !important;
+}
+
+.cart__ctas button {
+  padding: 1rem 2rem !important;
+  border-radius: 1rem !important;
+  background: #EA5514;
 }
