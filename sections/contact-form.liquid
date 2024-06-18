@@ -1,137 +1,135 @@
+{{ 'base.css' | asset_url | stylesheet_tag }}
 {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        {{ section.settings.heading }}
+<main>
+  <section class="pages_lead dark">
+    <div class="wrapper">
+      <h2 class="pages_ttl fadeUpTrigger">
+        <p class="en">CONTACT</p>
+        <p class="jp">お問い合わせ</p>
       </h2>
-    {%- else -%}
-      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
-    {%- endif -%}
-    {%- liquid
-      assign contact_form_class = 'isolate'
-      if settings.animations_reveal_on_scroll
-        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-      endif
-    -%}
-    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
-      {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
-          {% render 'icon-success' %}
-          {{ 'templates.contact.form.post_success' | t }}
-        </h2>
-      {%- elsif form.errors -%}
-        <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
-            {% render 'icon-error' %}
-            {{ 'templates.contact.form.error_heading' | t }}
-          </h2>
-        </div>
-        <ul class="form-status-list caption-large" role="list">
-          <li>
-            <a href="#ContactForm-email" class="link">
-              {{ form.errors.translated_fields.email | capitalize }}
-              {{ form.errors.messages.email }}
-            </a>
-          </li>
-        </ul>
-      {%- endif -%}
-      <div class="contact__fields">
-        <div class="field">
-          <input
-            class="field__input"
-            autocomplete="name"
-            type="text"
-            id="ContactForm-name"
-            name="contact[{{ 'templates.contact.form.name' | t }}]"
-            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-            placeholder="{{ 'templates.contact.form.name' | t }}"
+    </div>
+  </section>
+  <section class="pages_other bg_y">
+    <div class="bg_other fadeUpTrigger">
+      <div class="wrapper">
+        <div class="logo_icon">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0663/7794/1189/files/logo_icon_4d06aeff-cfca-4969-9c8f-db82f7fe6f10.png?v=1718261668"
+            alt=""
           >
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
         </div>
-        <div class="field field--with-error">
-          <input
-            autocomplete="email"
-            type="email"
-            id="ContactForm-email"
-            class="field__input"
-            name="contact[email]"
-            spellcheck="false"
-            autocapitalize="off"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            aria-required="true"
-            {% if form.errors contains 'email' %}
-              aria-invalid="true"
-              aria-describedby="ContactForm-email-error"
-            {% endif %}
-            placeholder="{{ 'templates.contact.form.email' | t }}"
-          >
-          <label class="field__label" for="ContactForm-email">
-            {{- 'templates.contact.form.email' | t }}
-            <span aria-hidden="true">*</span></label
-          >
-          {%- if form.errors contains 'email' -%}
-            <small class="contact__field-error" id="ContactForm-email-error">
-              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-              <span class="form__message">
-                {%- render 'icon-error' -%}
-                {{- form.errors.translated_fields.email | capitalize }}
-                {{ form.errors.messages.email -}}
-              </span>
-            </small>
-          {%- endif -%}
+        <div class="phone_contents">
+          <h3 class="pages_ttl_02 contact_ttl">お電話から</h3>
+          <div class="phone_num">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="57" height="58" viewBox="0 0 57 58" fill="none">
+                <path
+                  d="M47.4515 33.7408L37.5716 29.3136L37.5444 29.301C37.0315 29.0816 36.472 28.9936 35.9165 29.0449C35.361 29.0961 34.827 29.2851 34.3629 29.5946C34.3083 29.6307 34.2558 29.6699 34.2057 29.7121L29.1011 34.0637C25.8672 32.4929 22.5285 29.1794 20.9577 25.9874L25.3157 20.8053C25.3576 20.7529 25.3975 20.7004 25.4352 20.6438C25.7381 20.181 25.9219 19.6504 25.9702 19.0994C26.0185 18.5483 25.9298 17.9939 25.7121 17.4854V17.4603L21.2723 7.56363C20.9845 6.89937 20.4895 6.34603 19.8613 5.9862C19.2331 5.62637 18.5054 5.47936 17.7868 5.5671C14.945 5.94104 12.3366 7.33664 10.4486 9.49324C8.56062 11.6498 7.52222 14.4199 7.52736 17.2862C7.52736 33.9379 21.0752 47.4857 37.7268 47.4857C40.5931 47.4909 43.3632 46.4525 45.5198 44.5645C47.6764 42.6765 49.072 40.068 49.4459 37.2263C49.5338 36.5079 49.3871 35.7804 49.0277 35.1522C48.6682 34.5241 48.1153 34.029 47.4515 33.7408ZM37.7268 44.1302C30.6097 44.1225 23.7864 41.2918 18.7539 36.2592C13.7213 31.2267 10.8906 24.4033 10.8829 17.2862C10.875 15.2383 11.6128 13.2575 12.9585 11.7138C14.3043 10.1701 16.1659 9.16895 18.1957 8.89744C18.1949 8.90581 18.1949 8.91424 18.1957 8.9226L22.5998 18.7794L18.2649 23.9678C18.221 24.0185 18.181 24.0725 18.1454 24.1293C17.8298 24.6136 17.6447 25.1712 17.6079 25.7481C17.5712 26.3249 17.6841 26.9015 17.9357 27.4219C19.8357 31.308 23.7512 35.1941 27.6792 37.0921C28.2034 37.3413 28.7833 37.4503 29.3623 37.4084C29.9412 37.3665 30.4994 37.1751 30.9823 36.853C31.0361 36.8167 31.0879 36.7775 31.1375 36.7355L36.2357 32.386L46.0925 36.8006H46.1156C45.8474 38.8333 44.8478 40.6987 43.3038 42.0477C41.7598 43.3968 39.7772 44.1371 37.7268 44.1302Z"
+                  fill="#EA5514" />
+              </svg>
+            </span>
+            <a class="phone_num_link" href="tel:0000000000">000-000-0000</a>
+          </div>
+          <p class="open_time">
+            【営業時間】<br>
+            平日：AM9:00~​PM7:00<br>
+            土・日曜・祝日：AM9:00~​PM7:00
+          </p>
+          <!-- open_time -->
         </div>
+        <!-- phone_contents -->
+        <div class="form_contents">
+          <h3 class="pages_ttl_02 contact_ttl">フォームから</h3>
+          <div class="form">
+            {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+              <table class="table-some">
+                <tr>
+                  <th class="form_th">
+                    <label for="form_name">お名前</label>
+                  </th>
+                  <td class="form_td">
+                    <input type="text" id="form_name" name="contact[お名前]" placeholder="例）山田太郎" required>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="form_th">
+                    <label for="form_kana">ふりがな</label>
+                  </th>
+                  <td class="form_td">
+                    <input type="text" id="form_kana" name="contact[ふりがな]" placeholder="例）やまだたろう" required>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="form_th">
+                    <label for="form_mail">メールアドレス</label>
+                  </th>
+                  <td class="form_td">
+                    <input type="email" id="form_mail" name="contact[email]" placeholder="例）xxxx@sample.com" required>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="form_th">
+                    <label for="form_tel">電話番号</label>
+                  </th>
+                  <td class="form_td">
+                    <input type="tel" id="form_tel" name="contact[電話番号]" placeholder="例）090-1234-5678" required>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="form_th">
+                    <label for="form_textarea">お問い合わせ内容</label>
+                  </th>
+                  <td class="form_td">
+                    <textarea
+                      name="contact[body]"
+                      id="form_textarea"
+                      cols="30"
+                      rows="15"
+                      placeholder="500文字まで"
+                    ></textarea>
+                  </td>
+                </tr>
+              </table>
+              <p class="in_form">
+                <a href="{{ pages.policy.url }}" target="_blank">プライバシーポリシー</a
+                >をご確認の上、「送信」ボタンをクリックしてください。
+              </p>
+              <div class="form_btn">
+                <button type="submit" class="btn white"><span></span>送信する</button>
+              </div>
+              {%- if form.posted_successfully? -%}
+                <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+                  {% render 'icon-success' %}
+                  {{ 'templates.contact.form.post_success' | t }}
+                </h2>
+              {%- elsif form.errors -%}
+                <div class="form__message">
+                  <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+                    {% render 'icon-error' %}
+                    {{ 'templates.contact.form.error_heading' | t }}
+                  </h2>
+                </div>
+                <ul class="form-status-list caption-large" role="list">
+                  <li>
+                    <a href="#ContactForm-email" class="link">
+                      {{ form.errors.translated_fields.email | capitalize }}
+                      {{ form.errors.messages.email }}
+                    </a>
+                  </li>
+                </ul>
+              {%- endif -%}
+            {%- endform -%}
+          </div>
+          <!-- form -->
+        </div>
+        <!-- form_contents -->
       </div>
-      <div class="field">
-        <input
-          type="tel"
-          id="ContactForm-phone"
-          class="field__input"
-          autocomplete="tel"
-          name="contact[{{ 'templates.contact.form.phone' | t }}]"
-          pattern="[0-9\-]*"
-          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          placeholder="{{ 'templates.contact.form.phone' | t }}"
-        >
-        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
-      </div>
-      <div class="field">
-        <textarea
-          rows="10"
-          id="ContactForm-body"
-          class="text-area field__input"
-          name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
-        >
-          {{- form.body -}}
-        </textarea>
-        <label class="form__label field__label" for="ContactForm-body">
-          {{- 'templates.contact.form.comment' | t -}}
-        </label>
-      </div>
-      <div class="contact__button">
-        <button type="submit" class="button">
-          {{ 'templates.contact.form.send' | t }}
-        </button>
-      </div>
-    {%- endform -%}
-  </div>
-</div>
+      <!-- wrapper -->
+    </div>
+    <!-- bg_other -->
+  </section>
+  <!-- page_other -->
+</main>
 
 {% schema %}
 {
@@ -145,8 +143,8 @@
     {
       "type": "inline_richtext",
       "id": "heading",
-      "default": "t:sections.contact-form.settings.title.default",
-      "label": "t:sections.contact-form.settings.title.label"
+      "default": "Contact form",
+      "label": "Heading"
     },
     {
       "type": "select",
@@ -163,14 +161,6 @@
         {
           "value": "h0",
           "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
         }
       ],
       "default": "h1",

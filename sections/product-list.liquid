@@ -1,0 +1,54 @@
+<main>
+  <!-- --------------------- 下層ページの見出し  ---------------------- -->
+  <section class="pages_lead dark">
+    <div class="wrapper">
+      <h2 class="pages_ttl fadeUpTrigger">
+        <p class="en">LINE UP</p>
+        <p class="jp">商品一覧</p>
+      </h2>
+    </div>
+  </section>
+  <!-- --------------------- 下層ページの内容  ---------------------- -->
+  <section class="itemlist bg_y">
+    <div class="min-wrapper">
+      <div class="itemlist_container fadeUpTrigger">
+        {% for product in collections.all.products %}
+          <a href="{{ product.url }}" class="item">
+            <div class="item_img">
+              <img
+                src="{{ product.featured_image | img_url: '350x350' }}"
+                alt="{{ product.title }}"
+                width="350"
+                height="350"
+              >
+            </div>
+            <p class="item_name">{{ product.title }}</p>
+            <p class="price">
+              {% if product.compare_at_price > product.price %}
+                <span class="original-price">{{ product.compare_at_price | money }}(税込)</span>
+                <span class="discounted-price">{{ product.price | money }}(税込)</span>
+              {% else %}
+                <span class="regular-price">{{ product.price | money }}(税込)</span>
+              {% endif %}
+            </p>
+          </a>
+          <!-- item -->
+        {% endfor %}
+      </div>
+      <!-- itemlist_container -->
+    </div>
+    <!-- min-wrapper -->
+  </section>
+  <!-- itemlist -->
+</main>
+
+{% schema %}
+{
+  "name": "product-list",
+  "presets": [
+    {
+      "name": "product-list"
+    }
+  ]
+}
+{% endschema %}

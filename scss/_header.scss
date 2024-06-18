@@ -1,0 +1,308 @@
+@use "global" as *;
+.l-nav{
+	display: none;
+	@include deviceSP{	
+		.is-fixed &{
+			opacity: 1;
+			pointer-events: all;
+		}
+		&-header{
+			@include flex(center,center);
+			position: relative;
+			height: spvw(100);
+		}
+		&__button{
+			width: calc(100% - 3.5em);
+			height: spvw(100);
+			margin: 0 auto;
+			a{
+				position: relative;
+				@include flex(center,center);
+				background: #a79280;
+				color: $white;
+				font-size: 2.0rem;
+				letter-spacing: 0.1em;
+			}
+		}
+	}
+}
+.header_o{
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 4.2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  transition: color 0.3s ease, fill 0.3s ease;
+  h1{
+    a{
+      width: 250px;
+      @include deviceTBSP{
+        width: 147px;
+      }
+    }
+  }
+  .header_nav,.nav_container,.shopbtn{
+    display: flex;
+    align-items: center;
+    
+  }
+  @include deviceSP{
+    .header_nav{
+      column-gap: 1.5rem;
+    }
+  }
+  .nav_container{
+    a{
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+      letter-spacing: 2.55px;
+
+    }
+  }
+  .shopbtn{
+    margin-left: pxtovw(40);
+    // margin-left: 4rem;
+    column-gap: 2rem;
+    @include deviceSP{
+      column-gap: 1.2rem;
+    }
+    a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 1.4rem;
+      @include deviceTBSP{
+        color: #fff;
+      }
+      @include deviceSP{
+        font-size: 1rem;
+      }
+      svg{
+        width: 23px;
+        height: 23px;
+        fill: #231815;
+        transition: .3s;
+        @include deviceTBSP{
+          fill: #fff;
+        }
+        @include deviceSP{
+          width: 16px;
+          height: 16px;
+        }
+      }
+      
+    }
+  }
+  a{
+    transition: color 0.3s ease, fill 0.3s ease;
+  }
+  a svg {
+    transition: fill 0.3s ease;
+  }
+  transition: .5s;
+  &.active{
+    padding: 1rem 4rem;
+    background: rgba(248,246,236,0.7);
+    // background: linear-gradient(180deg, rgba(248,246,236,0.8) 0%, rgba(248,246,236,0) 100%);
+    color: #fff; /* 例: テキストの色を変更 */
+    height: 80px;
+    h1{
+      a{
+        width: 180px;
+      }
+    }
+    @include deviceTBSP{
+        height: 60px;
+        padding: 1rem .8rem 1rem 2rem;
+        .shopbtn{
+          a{
+            color: #231815;
+            svg{
+              fill: #231815;
+            }
+          }
+        }
+        .burger-btn{
+          .bar{
+            background-color: #231815;
+            }
+            .menu_text{
+              color: #231815;
+            }
+        }
+        h1{
+          a{
+            width: 140px;
+          }
+        }
+      }
+    
+  }
+}
+.burger-btn{
+  display: none;
+}
+@include deviceTBSP{
+  //ハンバーガーメニュー
+  .burger-btn {
+    display: block;
+    width: 65px;
+    height: 46px;
+    position: relative;
+    z-index: 3;
+    border-radius: 50%;
+    // filter: $btn_dropshadow;
+    margin: 0 0 0 auto;
+    cursor: pointer;
+    right: .6rem;
+    margin-left: 2rem;
+    @include deviceSP{
+      margin-left: 1.2rem;
+      margin-left: 0;
+      width: 43px;
+      height: 33px;
+    }
+    .menu_text{
+      color: #fff;
+      position: absolute;
+      bottom: 0;
+      font-size: 1.4rem;
+      left: 5%;
+      @include deviceSP{
+        font-size: 1rem;
+        left: 0;
+        bottom: 1px;
+      }
+      // transform: translateX(-50%);
+    }
+    .bar {
+      width: 24px;
+      height: 2px;
+      display: block;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      transition: all .4s;
+      @include deviceSP{
+        width: 20px;
+      }
+    }
+
+    .bar_top {
+      top: 5px;
+      @include deviceSP{
+        top: 3px;
+      }
+    }
+    
+    .bar_mid {
+      top: 13px;
+      @include deviceSP{
+        top: 8px;
+      }
+    }
+    
+    .bar_bottom {
+      top: 21px;
+      @include deviceSP{
+        top: 13px;
+      }
+    }
+  }
+  .burger-btn.close {
+    .bar_top {
+      transform: translate(-50%, 7px) rotate(45deg);
+      transition: transform 0.3s;
+      @include deviceSP{
+        transform: translate(-50%, 5px) rotate(45deg);
+      }
+    }
+    .bar_mid {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bar_bottom {
+      transform: translate(-50%, -9px) rotate(-45deg);
+      transition: transform 0.3s;
+      @include deviceSP{
+        transform: translate(-50%, -5px) rotate(-45deg);
+
+      }
+    }
+  }
+  .header_o{
+    padding: 2.7rem 1rem 1rem 2rem;
+    @include deviceSP{
+      padding: 1.6rem 1rem;
+    }
+    .nav_container{
+      width: 60vw;
+      height: 60vw;
+      position: fixed;
+      top: 8rem;
+      right: -100%;
+      z-index: 10;
+      transition: .3s;
+      background: rgba(255,255,255,.9);
+      background: #604C3F;
+      padding: 8vw 4vw 4vw 6vw;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      row-gap: 3rem;
+      border-radius: 2rem 0 0 2rem;
+      overflow-y: auto;
+      filter: drop-shadow(2px 0 4px rgba(0,0,0,.1));
+      a{
+        color: #fff;
+        position: relative;
+        padding: 1rem 1.5rem 1rem 2rem;
+        &::before{
+          content: '';
+          width: 9px ;
+          height: 12px;
+          background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/footer_egg.png) 0 / contain no-repeat;
+          position: absolute;
+          left: 0;
+          top: 17px;
+        }
+      }
+      @include deviceSP{
+        width: 70vw;
+        height: 90vh;
+        top: 6rem;
+        row-gap: 1rem;
+        
+      }
+      
+      &.active{
+        transition: .3s;
+        right: 0;
+      }
+    }
+  }
+  .bg_white{
+    .burger-btn{
+      .bar{
+        background: #231815;
+      }
+      .menu_text{
+        color: #231815;
+      }
+      }
+      .shopbtn{
+        .loginbtn,svg{
+          color: #231815;
+          span{
+            svg{
+              fill: #231815;
+            }
+          }
+        }
+      }
+  }
+}

@@ -1,0 +1,204 @@
+@use "global" as *;
+.footer{
+  background-color: #604C3F;
+  .footer_container{
+    display: flex;
+    justify-content: space-between;
+    padding: 3.8rem 0;
+    color: #fff;
+    font-size: 1.4rem;
+    @include deviceTBSP{
+      flex-direction: column;
+      width: 80%;
+      margin: 0 auto;
+    }
+    @include deviceSP{
+      width: 86%;
+    }
+    a{
+      &:hover{
+        color: $main;
+      }
+    }
+    .footer_contents{
+      display: flex;
+      @include deviceTBSP{
+        flex-wrap: wrap;
+        margin-top: 3.1rem;
+      }
+    }
+  }
+  .footer_logo{
+    width: 218px;
+  }
+  .footer_nav{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.8rem 2vw;
+    height: 152px;
+    @include deviceTBSP{
+      flex-direction: column;
+      height: 180px;
+      flex-basis: 40%;
+    }
+    @include deviceSP{
+      flex-basis: 56%;
+    }
+    .footer_nav_item{
+      // margin-top: 2rem;
+      position: relative;
+      @include deviceTBSP{
+        font-size: 1.2rem;
+        padding-left: 1.8rem;
+        font-weight: 500;
+        &::before{
+          content: '';
+          width: 9px ;
+          height: 12px;
+          background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/footer_egg.png) 0 / contain no-repeat;
+          position: absolute;
+          left: 0;
+          top: 5px;
+        }
+      }
+    }
+    .sub_nav_item{
+      padding-left: 1.6rem;
+      @include deviceTBSP{
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .footer_btn{
+    margin-left: pxtovw(70);
+    @include deviceSP{
+      flex-basis: 30%;
+    }
+    .footer_btn_item{
+      @include deviceTBSP{
+        font-size: 1.2rem;
+        
+      }
+      &:not(:first-child){
+        margin-top: 2rem;
+      }
+      svg{
+        width: 23px;
+        height: 23px;
+        margin-right: 7px;
+        fill: #fff;
+        transition: .3s;
+        @include deviceSP{
+          width: 17px;
+          height: 17px;
+        }
+      }
+      &:hover{
+        svg{
+          fill: $main;
+        }
+      }
+    }
+  }
+  .footer_cta{
+    margin-left: pxtovw(113);
+    @include deviceTBSP{
+      flex-basis: 100%;
+      margin: 0 auto;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      padding: 3rem 0;
+
+    }
+    .mail{
+      span{
+        width: 30px;
+        height: 28px;
+        background: transparent;
+        border-radius: 0;
+        svg{
+          vertical-align: middle;
+          fill:#231815;
+          width: 30px;
+          height: 30px;
+          transition: .3s;
+        }
+      }
+      p{
+        font-size: 1.6rem;
+        margin-left: 2rem;
+      }
+      &:hover{
+        span{
+          svg{
+            fill: $main;
+          }
+        }
+      }
+    }
+    .footer_phone{
+      margin-top: 1rem;
+      display: flex;
+      align-items: stretch;
+      font-size: 2.9rem;
+      font-weight: 600;
+      letter-spacing: 0.58px;
+      line-height: 1;
+      cursor: pointer;
+      @include deviceTBSP{
+        font-size: 2.6rem;
+      }
+      span{
+        width: 4rem;
+        height: 4rem;
+        margin-right: 2px;
+        @include deviceTBSP{
+          width: 3.5rem;
+          height: 3.5rem;
+        }
+        svg{
+          width: 4rem;
+          height: 4rem;
+          fill: #fff;
+          // vertical-align: middle;
+          @include deviceTBSP{
+            width: 3.5rem;
+            height: 3.5rem;
+          }
+        }
+        }
+      @include deviceTBSP{
+        justify-content: center;
+      }
+      &:hover{
+        color: $main;
+        svg{
+          fill: $main;
+        }
+      }
+    }
+    .opentime{
+      margin-top: 4px;
+      @include deviceTBSP{
+        width: fit-content;
+        margin: 4px auto 0;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .footer_nav_sp{
+    display: none;
+  }
+  @include deviceTBSP{
+    .footer_nav_sp{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 3rem;
+      margin-top: 3rem;
+      .footer_nav_item_sp{
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

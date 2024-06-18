@@ -1,0 +1,597 @@
+@use "global" as *;
+body{
+  @include deviceSP{
+    overflow-x: hidden;
+  }
+}
+.kv{
+  /* スライドのサイズ調整 */
+  width: 100%;
+  // height: 100vh;
+  height: pxtovw(1111);
+  max-height: 1100px;
+  background: #ECF9FF;
+  @include deviceSP{
+    height: 70vh;
+  }
+  // .slider {
+  //   width: 100%;
+  //   text-align: center;
+  //   img {
+  //     height: auto;
+  //     // height: 100vh;
+  //     height: pxtovw(1111);
+  //     max-height: 1100px;
+  //     width: 100%;
+  //     object-fit: cover;
+  //     object-position: center bottom;
+  //   }
+  // }
+  .slider {
+    position: relative;
+    width: 100%;
+    height: pxtovw(1111);
+    max-height: 1100px;
+    overflow: hidden;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 50px;
+    @include deviceTBSP{
+      height: 75vh;
+      max-height: 1300px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      z-index: 0;
+    }
+    @include deviceSP{
+      height: 70vh;
+    }
+    &::after{
+      content: '';
+      width: 100%;
+      height: 275px;
+      background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/kv_cover.png) no-repeat;
+      background-size: contain;
+      background-position: bottom center;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      @include deviceSP{
+        height: 100px;
+        width: 100%;
+        left: 0;
+        bottom: -1px;
+        background-image: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/kv_cover_sp.png);
+        
+      }
+    }
+  }
+  
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 10s ease-in-out;
+  }
+  
+  .slide.active {
+    opacity: 1;
+  }
+  
+  @keyframes zoom {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }
+  
+  .slide img {
+    animation: zoom 10s ease-in-out infinite alternate;
+  }
+}
+.top_ttl{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font: 500 1.8rem / 1.1 $bellefair;
+  letter-spacing: 4.14px;
+  @include deviceTBSP{
+    font-size: 1.5rem;
+  }
+  span{
+    margin-bottom: 1rem;
+    margin-left: -6px;
+    @include deviceTBSP{
+      margin-bottom: 1.8rem;
+    }
+    img{
+      width: 6.3rem;
+      height: 8.5rem;
+      object-fit: contain;
+      @include deviceSP{
+        width: 3.3rem;
+        height: 4.5rem;
+      }
+    }
+  }
+}
+.about{
+  .about_bg{
+    background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_bg.webp) 0 / cover no-repeat;
+    padding: 0 0 11rem;
+    width: 100%;
+    @include deviceTBSP{
+      padding-bottom: 5.6rem;
+    }
+    @include deviceSP{
+      padding: 5.6rem 1.6rem;
+      background-position: bottom right;
+    }
+  }
+  .about_contents{
+    width: 974px;
+    height: 1100px;
+    margin: -10.5rem auto 0;
+    position: relative;
+    z-index: 10;
+    background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_union.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-size: 100%;
+    padding: 8.4rem 4rem 6.2rem;
+    @include deviceTBSP{
+      background-image: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_union_sp.png);
+      background-size: cover;
+      background-position: top center;
+      border-radius: 0 0 2rem 2rem;
+      width: 100%;
+      padding: 11rem 2rem 6.2rem;
+      height: 1240px;
+      }
+      @include deviceSP{
+        background: 
+        linear-gradient(to bottom, 
+        rgba(249, 255, 254, 0) 34%, 
+        rgba(249, 255, 254, 0.9) 34%),
+        url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_bg_ssp.png) no-repeat top;
+        background-size: cover, contain;
+        background-position: top center, top;
+        height: 940px;
+        padding: 4.6rem 1rem 6rem;
+      }
+      @media screen and (max-width: 420px) {
+        background: 
+        linear-gradient(to bottom, 
+        rgba(249, 255, 254, 0) 30%, 
+        rgba(249, 255, 254, 0.9) 30%),
+        url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_bg_ssp.png) no-repeat top;
+        background-size: cover, contain;
+        background-position: top center, top;
+      }
+    &::before,&::after{
+      content: '';
+      width: 253px;
+      height: 105px;
+      position: absolute;
+      background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_item02.png) no-repeat;
+      background-size: contain;
+      z-index: 10;
+      top: pxtovw(211);
+      right: -14%;
+      @include deviceTBSP{
+        width: 200px;
+        height: 100px;
+        right: 0;
+        top: 238px;
+      }
+      @include deviceSP{
+        background-image: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_item02sp.png);
+        width: 136px;
+        height: 57px;
+        right: -1.6rem;
+        // right: 0;
+        top: 139px;
+      }
+    }
+    &::after{
+      width: 303px;
+      height: 155px;
+      background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_item01.png) no-repeat;
+      background-size: contain;
+      top: 63rem;
+      right: auto;
+      left: -12%;
+      @include deviceTBSP{
+        width: 270px;
+        height: 80px;
+        background-image: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/about_itemsp.png);
+        top: 30%;
+        left: 0;
+      }
+      @include deviceSP{
+        width: 180px;
+        height: 85px;
+        top: 30%;
+        left: -4rem;
+      }
+    }
+    .about_text{
+      width: 446px;
+      margin: 8rem auto 1.2rem;
+      writing-mode: vertical-rl;
+      @include deviceTBSP{
+        margin: 4rem auto 1.2rem;
+        width: 100%;
+        width: fit-content;
+        text-align: center;
+      }
+      .about_lead{
+        // font-weight: 500;
+        // font-size: 2.5rem;
+        width: 73px;
+        @include deviceTBSP{
+          margin: 0 auto;
+        }
+        @include deviceSP{
+          width: 43px;
+        }
+        img{
+          object-fit: contain;
+        }
+      }
+      .about_inner_text{
+        margin-right: 3.2rem;
+        p{
+          font-size: 1.8rem;
+          font-weight: 400;
+          letter-spacing: 2px;
+          line-height: 1.8;
+          margin-right: 2rem;
+        }
+      }
+    }
+    .about_img{
+      width: 667px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 3rem;
+      @include deviceTBSP{
+        width: 85%;
+        bottom: 33%;
+        height: 235px;
+      }
+      @include deviceSP{
+        width: 100%;
+      }
+      img{
+        object-fit: contain;
+      }
+    }
+    @include deviceTBSP{
+      .about_inner_text_sp{
+        width: 66%;
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        bottom: 15%;
+        transform: translateX(-50%);
+        p{
+          font-size: 1.4rem;
+          font-weight: 400;
+          line-height: 162%; /* 22.68px */
+          letter-spacing: 2.1px;
+        }
+        @include deviceSP{
+          width: 76%;
+        }
+      }
+    }
+    .btn{
+      position: absolute;
+      bottom: 6.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      @include deviceSP{
+        bottom: 5rem;
+      }
+    }
+  }
+}
+/*================================================
+/
+/  PRODUCT
+/
+=================================================*/
+.product{
+  .product_ttl_container{
+    position: relative;
+    height: 280px;
+    @include deviceTBSP{
+      height: 220px;
+    }
+    @include deviceSP{
+      height: auto;
+    }
+    .product_item{
+      width: 514px;
+      height: 152px;
+      position: absolute;
+      @include deviceTBSP{
+        width: 250px;
+      }
+      @include deviceSP{
+        width: 200px;
+      }
+      &.item01{
+        top: 68px;
+        left: 0;
+        @include deviceTBSP{
+          left: auto;
+          top: 53px;
+          right: 0;
+          }
+          }
+          &.item02{
+            top: 53px;
+            right: pxtovw(59);
+            @include deviceSP{
+              top: 158px;
+              left: 0;
+        }
+      }
+    }
+    .top_ttl{
+      padding-top: 11rem;
+      @include deviceSP{
+        padding-top: 6rem;
+      }
+    }
+  }
+  .product_contents{
+    background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/product_01_bg.jpg) no-repeat;
+    background-size: cover;
+    padding: 3rem;
+    @include deviceTBSP{
+      background: 
+      linear-gradient(to bottom, 
+        #F8F6EC 30%, 
+        rgba(248, 246, 236, 0) 30%), 
+      url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/product_01_bgsp.png) no-repeat;
+      padding: 5rem 0;
+    }
+    .product_container{
+      display: flex;
+      align-items: center;
+      column-gap: pxtovw(80);
+      @include deviceTBSP{
+        flex-direction: column;
+      }
+      .product_img_box{
+        img{
+          height: 513px;
+          width: 100%;
+          object-fit: contain;
+          @include deviceSP{
+            height: 285px;
+          }
+        }
+      }
+      .product_text{
+        color: #fff;
+        width: 53%;
+        @include deviceTBSP{
+          width: 88%;
+        }
+        .product_ttl{
+          font-size: 2.4rem;
+          font-weight: 600;
+          letter-spacing: 3.6px;
+          @include deviceTBSP{
+            text-align: center;
+          }
+          @include deviceSP{
+            margin-top: 3rem;
+            font-size: 1.6rem;
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.50);
+          }
+        }
+        .product_txtbox{
+          margin-top: 3rem;
+          line-height: 142%; /* 22.72px */
+          text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+          letter-spacing: 2.4px;
+          @include deviceSP{
+            font-size: 1.4rem;
+          }
+        }
+        .btn{
+          margin-top: 8rem;
+          margin-left: 0;
+          @include deviceTBSP{
+            margin: 3rem auto 0;
+          }
+        }
+        .btn2{
+          margin-top: 1.6rem;
+        }
+      }
+    }
+    &.second{
+      background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/product_02_bg.jpg) no-repeat;
+      background-size: cover;
+      @include deviceTBSP{
+        .wrapper{
+          width: 100%;
+        }
+        background: 
+      linear-gradient(to bottom, 
+        #F8F6EC 30%, 
+        rgba(248, 246, 236, 0) 30%), 
+      url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/product_02_bgsp.png) no-repeat;
+      background-size: cover,cover;
+      background-position: center, top;
+      }
+      .product_container{
+        flex-direction: row-reverse;
+        @include deviceTBSP{
+          flex-direction: column;
+          position: relative;
+          .product_img_box{
+            position: relative;
+            z-index: 20;
+          }
+          .product_item{
+            width: 200px;
+            position: absolute;
+            top: -3rem;
+            right: -1.6rem;
+            right: 0;
+          }
+          .item02{
+            top: 4rem;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+/*================================================
+/
+/  FEATURES
+/
+=================================================*/
+.features{
+  padding: 9rem 0 0;
+  @include deviceSP{
+    padding-top: 6rem;
+  }
+  .features_bg{
+    padding-bottom: 26rem;
+    position: relative;
+    @include deviceSP{
+      padding-bottom: 9rem;
+      overflow-x: hidden;
+    }
+    .features_item{
+      position: absolute;
+      width: 514px;
+      height: 152px;
+      right: 0;
+      top: 0;
+      @include deviceTBSP{
+        width: 200px;
+        height: 70px;
+      }
+      @include deviceSP{
+        width: 150px;
+        height: 55px;
+        top: -3rem;
+      }
+      img{
+        object-fit: contain;
+      }
+      &.item02{
+        right: auto;
+        left: 0;
+        top: auto;
+        bottom: 3rem;
+        @include deviceTBSP{
+          top: 3.5rem;
+        }
+      }
+    }
+  }
+  .features_container{
+    display: flex;
+    position: relative;
+    margin-top: 4rem;
+    .features_box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .figure{
+        margin-top: .5rem;
+        @include deviceTBSP{
+          font-weight: 700;
+        }
+        @include deviceSP{
+          font-size: 1.4rem;
+          text-align: center;
+        }
+      }
+      .btn{
+        margin-top: 3rem;
+        @include deviceSP{
+          margin-top: 1.6rem;
+        }
+      }
+    }
+  }
+  @include deviceTBSP{
+    .featuresSwiper{
+      padding-right: 20%;
+      }
+      .swiper-scrollbar{
+        background: #fff;
+        height: 6px;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20rem;
+        @include deviceSP{
+          bottom: 5rem;
+        }
+        .swiper-scrollbar-drag {
+          background: #3F3B3A; // ドラッグ部分の色
+          width: 10px; // ドラッグ部分の幅
+          border-radius: 10px; // ドラッグ部分の角丸
+        }
+      }
+  }
+}
+/*================================================
+/
+/  Q&A faq
+/
+=================================================*/
+.faq{
+  background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/faq_bg.png) no-repeat;
+  background-size: cover;
+  padding: 10.8rem 2rem ;
+  @include deviceSP{
+    padding: 4rem 2rem 3rem;
+    background-position: left 55% center;
+  }
+  .faq_ttl{
+    font: 400 3.6rem / 1.1 $bellefair;
+    color: #fff;
+    letter-spacing: 8.28px;
+    text-align: center;
+    @include deviceSP{
+      font-size: 2.5rem;
+    }
+  }
+  .btn{
+    margin-top: 1.8rem;
+  }
+}
