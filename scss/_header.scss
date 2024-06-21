@@ -37,7 +37,7 @@
   transition: color 0.3s ease, fill 0.3s ease;
   h1{
     a{
-      width: 250px;
+      width: 217px;
       @include deviceTBSP{
         width: 147px;
       }
@@ -111,7 +111,7 @@
     height: 80px;
     h1{
       a{
-        width: 180px;
+        width: 158px;
       }
     }
     @include deviceTBSP{
@@ -139,7 +139,13 @@
           }
         }
       }
-    
+    @include deviceSP{
+      .header_logo{
+        p{
+          display: none;
+        }
+      }
+    }
   }
 }
 .burger-btn{
@@ -304,5 +310,27 @@
           }
         }
       }
+  }
+}
+.header_logo{
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  @include deviceSP{
+   flex-direction: column;
+   gap: 1vw;
+   align-items: flex-end;
+  }
+  p{
+    width: 126px;
+  }
+  @include deviceSP{
+    p{
+      width: 100px;
+      height: 19px;
+      img{
+        vertical-align: text-top;
+      }
+    }
   }
 }

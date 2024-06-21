@@ -878,6 +878,24 @@ th {
 .kv .slide img {
   animation: zoom 10s ease-in-out infinite alternate;
 }
+.kv .catchcopy {
+  width: 42.9861111111vw;
+  max-width: 619px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 767px) {
+  .kv .catchcopy {
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 440px) {
+  .kv .catchcopy {
+    width: 80vw;
+  }
+}
 
 .top_ttl {
   display: flex;
@@ -1480,7 +1498,12 @@ th {
   }
 }
 .footer .footer_logo {
-  width: 218px;
+  width: 139px;
+}
+@media screen and (max-width: 440px) {
+  .footer .footer_logo {
+    width: 130px;
+  }
 }
 .footer .footer_nav {
   display: flex;
@@ -1721,7 +1744,7 @@ th {
   transition: 0.5s;
 }
 .header_o h1 a {
-  width: 250px;
+  width: 217px;
 }
 @media screen and (max-width: 767px) {
   .header_o h1 a {
@@ -1798,7 +1821,7 @@ th {
   height: 80px;
 }
 .header_o.active h1 a {
-  width: 180px;
+  width: 158px;
 }
 @media screen and (max-width: 767px) {
   .header_o.active {
@@ -1819,6 +1842,11 @@ th {
   }
   .header_o.active h1 a {
     width: 140px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .header_o.active .header_logo p {
+    display: none;
   }
 }
 
@@ -2008,6 +2036,31 @@ th {
     fill: #231815;
   }
 }
+.header_logo {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+@media screen and (max-width: 440px) {
+  .header_logo {
+    flex-direction: column;
+    gap: 1vw;
+    align-items: flex-end;
+  }
+}
+.header_logo p {
+  width: 126px;
+}
+@media screen and (max-width: 440px) {
+  .header_logo p {
+    width: 100px;
+    height: 19px;
+  }
+  .header_logo p img {
+    vertical-align: text-top;
+  }
+}
+
 /*================================================
 /
 /  商品一覧
@@ -2414,7 +2467,7 @@ th {
   font-weight: 700;
   line-height: 30px; /* 200% */
   letter-spacing: 2.55px;
-  flex-basis: 30%;
+  flex-basis: 24%;
 }
 @media screen and (max-width: 440px) {
   .item_page .item_info .info_container .info_contents .info_contents_head {
@@ -2425,7 +2478,7 @@ th {
   font-weight: 500;
   font-size: 15px;
   line-height: 30px; /* 200% */
-  flex-basis: 70%;
+  flex-basis: 75%;
   letter-spacing: 2.55px;
 }
 @media screen and (max-width: 440px) {
@@ -2722,11 +2775,11 @@ th {
   }
 }
 .page_about .story_03 {
-  padding: 16.8rem 0 0;
+  padding: 16.8rem 0 12rem;
 }
 @media screen and (max-width: 440px) {
   .page_about .story_03 {
-    padding: 8rem 0 0;
+    padding: 8rem 0 10.4rem;
   }
 }
 .page_about .story_03 .story_03_contaier {
@@ -2841,7 +2894,7 @@ th {
 .page_about .itemlist_banner {
   position: relative;
   height: 237px;
-  margin-top: 13.3rem;
+  margin-top: 7rem;
 }
 @media screen and (max-width: 767px) {
   .page_about .itemlist_banner {
@@ -2851,7 +2904,7 @@ th {
 @media screen and (max-width: 440px) {
   .page_about .itemlist_banner {
     height: 120px;
-    margin-top: 9rem;
+    margin-top: 0;
   }
 }
 .page_about .itemlist_banner .itemlist_banner_img {
@@ -2866,6 +2919,112 @@ th {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.page_about .about_brand {
+  padding: 11.3rem 0 12rem;
+  background: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0) 100%);
+  position: relative;
+}
+@media screen and (max-width: 767px) {
+  .page_about .about_brand {
+    padding: 5.8rem 0 8rem;
+  }
+}
+.page_about .about_brand::before {
+  content: "";
+  width: 514px;
+  height: 152px;
+  background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/brand_01.png?v=1718849551) no-repeat;
+  background-size: contain;
+  top: -9%;
+  right: 2rem;
+  position: absolute;
+}
+@media screen and (max-width: 767px) {
+  .page_about .about_brand::before {
+    background-image: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/brand_sp01.png);
+    width: 100%;
+    height: 100vw;
+    z-index: 0;
+    top: 22%;
+    right: 0;
+    left: 0;
+  }
+}
+.page_about .about_brand::after {
+  content: "";
+  width: 514px;
+  height: 152px;
+  background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/brand_02.png?v=1718849551) no-repeat;
+  background-size: contain;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+@media screen and (max-width: 767px) {
+  .page_about .about_brand::after {
+    content: none;
+  }
+}
+.page_about .about_brand .about_brand_container {
+  display: flex;
+  justify-content: center;
+  column-gap: 8vw;
+}
+@media screen and (max-width: 767px) {
+  .page_about .about_brand .about_brand_container {
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+}
+.page_about .about_brand .about_brand_container .img_logo {
+  width: 235px;
+}
+@media screen and (max-width: 440px) {
+  .page_about .about_brand .about_brand_container .img_logo {
+    order: 1;
+    width: 45%;
+  }
+}
+.page_about .about_brand .about_brand_container .img_logo img {
+  width: 235px;
+  height: 262px;
+  object-fit: contain;
+}
+@media screen and (max-width: 440px) {
+  .page_about .about_brand .about_brand_container .img_logo img {
+    width: 100%;
+    height: 168px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .page_about .about_brand .about_brand_container .about_txt {
+    display: contents;
+  }
+}
+.page_about .about_brand .about_brand_container .about_txt .about_ttl {
+  text-align: left;
+}
+@media screen and (max-width: 767px) {
+  .page_about .about_brand .about_brand_container .about_txt .about_ttl {
+    order: 0;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+  }
+}
+.page_about .about_brand .about_brand_container .about_txt .about_ttl .jp {
+  margin-top: 2.5rem;
+}
+.page_about .about_brand .about_brand_container .about_txt .story_txt {
+  text-align: left;
+}
+@media screen and (max-width: 767px) {
+  .page_about .about_brand .about_brand_container .about_txt .story_txt {
+    order: 2;
+    margin-top: 0;
+  }
 }
 
 /*================================================
@@ -2984,6 +3143,9 @@ th {
 }
 .pages_other .access_map {
   margin-top: 8rem;
+}
+.pages_other .access_map .pages_ttl02 {
+  font-size: 2.4rem;
 }
 @media screen and (max-width: 440px) {
   .pages_other .access_map {

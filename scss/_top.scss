@@ -104,6 +104,21 @@ body{
   .slide img {
     animation: zoom 10s ease-in-out infinite alternate;
   }
+  .catchcopy{
+    width: pxtovw(619);
+    max-width: 619px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    @include deviceTBSP{
+      width: 70vw;
+    }
+    @include deviceSP{
+      width: 80vw;
+      
+    }
+  }
 }
 .top_ttl{
   display: flex;

@@ -359,7 +359,7 @@
           font-weight: 700;
           line-height: 30px; /* 200% */
           letter-spacing: 2.55px;
-          flex-basis: 30%;
+          flex-basis: 24%;
           @include deviceSP{
             font-size: 1.4rem;
           }
@@ -368,7 +368,7 @@
           font-weight: 500;
           font-size: 15px;
           line-height: 30px; /* 200% */
-          flex-basis: 70%;
+          flex-basis: 75%;
           letter-spacing: 2.55px;
           @include deviceSP{
             font-size: 1.4rem;
@@ -634,9 +634,9 @@
     }
   }
   .story_03{
-    padding: 16.8rem 0 0;
+    padding: 16.8rem 0 12rem;
     @include deviceSP{
-      padding: 8rem 0 0;
+      padding: 8rem 0 10.4rem;
     }
     .story_03_contaier{
       display: flex;
@@ -732,13 +732,13 @@
   .itemlist_banner{
     position: relative;
     height: 237px;
-    margin-top: 13.3rem;
+    margin-top: 7rem;
     @include deviceTBSP{
       height: 140px;
       }
       @include deviceSP{
       height: 120px;
-      margin-top: 9rem;
+      margin-top: 0;
     }
     .itemlist_banner_img{
       width: 100%;
@@ -752,6 +752,98 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%,-50%);
+    }
+  }
+  .about_brand{
+    padding: 11.3rem 0 12rem;
+    background: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+    position: relative;
+    @include deviceTBSP{
+      padding: 5.8rem 0 8rem;
+
+    }
+      &::before{
+        content: '';
+        width: 514px;
+        height: 152px;
+        background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/brand_01.png?v=1718849551) no-repeat;
+        background-size: contain;
+        top: -9%;
+        right: 2rem;
+        position: absolute;
+        @include deviceTBSP{
+          background-image: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/brand_sp01.png);
+          width: 100%;
+          height: 100vw;
+          z-index: 0;
+          top: 22%;
+          right: 0;
+          left: 0;
+        }
+      }
+      &::after{
+        content: '';
+        width: 514px;
+        height: 152px;
+        background: url(https://cdn.shopify.com/s/files/1/0663/7794/1189/files/brand_02.png?v=1718849551) no-repeat;
+        background-size: contain;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        @include deviceTBSP{
+          content: none;
+        }
+      }
+    .about_brand_container{
+      display: flex;
+      justify-content: center;
+      column-gap: 8vw;
+      @include deviceTBSP{
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+      }
+      .img_logo{
+        width: 235px;
+        @include deviceSP{
+          order: 1;
+          width: 45%;
+        }
+        img{
+          width: 235px;
+          height: 262px;
+          object-fit: contain;
+          @include deviceSP{
+            width: 100%;
+            height: 168px;
+          }
+        }
+      }
+      .about_txt{
+        @include deviceTBSP{
+          display: contents;
+          
+        }
+        .about_ttl{
+          text-align: left;
+          @include deviceTBSP{
+            order: 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+          }
+          .jp{
+            margin-top: 2.5rem;
+          }
+        }
+        .story_txt{
+          text-align: left;
+          @include deviceTBSP{
+            order: 2;
+            margin-top: 0;
+          }
+        }
+      }
     }
   }
 }
@@ -860,6 +952,9 @@
   }
   .access_map{
     margin-top: 8rem;
+    .pages_ttl02{
+      font-size: 2.4rem;
+    }
     @include deviceSP{
       margin-top: 6rem;
       .pages_ttl02{
@@ -1072,8 +1167,6 @@
         margin-top: 3.2rem;
       }
     }
-
-
     /*アコーディオンタイトル*/
     .title {
       position: relative;/*+マークの位置基準とするためrelative指定*/

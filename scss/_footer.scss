@@ -29,7 +29,10 @@
     }
   }
   .footer_logo{
-    width: 218px;
+    width: 139px;
+    @include deviceSP{
+      width: 130px;
+    }
   }
   .footer_nav{
     display: flex;
