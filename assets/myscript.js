@@ -60,93 +60,128 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //headerの色を変える
 function updateHeaderColorBasedOnSection() {
-  if (window.innerWidth < 768) {
-    return;
-  }
-
-  const header = document.querySelector('.header_o');
+  const logo = document.querySelector('.header_logo a');
+  const logoP = document.querySelector('.header_logo p');
   const sections = document.querySelectorAll('section');
   let found = false;
 
-  sections.forEach((section) => {
-    const rect = section.getBoundingClientRect();
+  // 画面幅が768px以上の場合の処理
+  if (window.innerWidth >= 768) {
+    const header = document.querySelector('.header_o');
 
-    if (rect.top <= 0 && rect.bottom >= 0) {
-      if (section.classList.contains('dark')) {
-        header.style.color = '#fff';
-        header.querySelectorAll('a').forEach((element) => {
-          element.style.color = '#fff';
-          element.querySelectorAll('svg').forEach((svg) => {
-            svg.style.fill = '#fff';
-          });
-          element.addEventListener('mouseover', () => {
-            element.style.color = '#EA5514';
-            element.querySelectorAll('svg').forEach((svg) => {
-              svg.style.fill = '#EA5514';
-            });
-          });
-          element.addEventListener('mouseout', () => {
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top <= 0 && rect.bottom >= 0) {
+        if (section.classList.contains('dark')) {
+          header.style.color = '#fff';
+          logo.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/logo_white.png")';
+          logoP.style.backgroundImage =
+            'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/by-nagai-tamago.png?v=1718846692")';
+          header.querySelectorAll('a').forEach((element) => {
             element.style.color = '#fff';
             element.querySelectorAll('svg').forEach((svg) => {
               svg.style.fill = '#fff';
             });
-          });
-        });
-      } else {
-        header.style.color = '#231815';
-        header.querySelectorAll('a').forEach((element) => {
-          element.style.color = '#231815';
-          element.querySelectorAll('svg').forEach((svg) => {
-            svg.style.fill = '#231815';
-          });
-          element.addEventListener('mouseover', () => {
-            element.style.color = '#EA5514';
-            element.querySelectorAll('svg').forEach((svg) => {
-              svg.style.fill = '#EA5514';
+            element.addEventListener('mouseover', () => {
+              element.style.color = '#EA5514';
+              element.querySelectorAll('svg').forEach((svg) => {
+                svg.style.fill = '#EA5514';
+              });
+            });
+            element.addEventListener('mouseout', () => {
+              element.style.color = '#fff';
+              element.querySelectorAll('svg').forEach((svg) => {
+                svg.style.fill = '#fff';
+              });
             });
           });
-          element.addEventListener('mouseout', () => {
+        } else {
+          header.style.color = '#231815';
+          logo.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/logo_c.png")';
+          logoP.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/by_brawn.png")';
+          header.querySelectorAll('a').forEach((element) => {
             element.style.color = '#231815';
             element.querySelectorAll('svg').forEach((svg) => {
               svg.style.fill = '#231815';
             });
+            element.addEventListener('mouseover', () => {
+              element.style.color = '#EA5514';
+              element.querySelectorAll('svg').forEach((svg) => {
+                svg.style.fill = '#EA5514';
+              });
+            });
+            element.addEventListener('mouseout', () => {
+              element.style.color = '#231815';
+              element.querySelectorAll('svg').forEach((svg) => {
+                svg.style.fill = '#231815';
+              });
+            });
           });
-        });
+        }
+        found = true;
       }
-      found = true;
-    }
-  });
+    });
 
-  // スクロール位置に該当するセクションがない場合のデフォルト設定
-  if (!found) {
-    header.style.color = '#231815';
-    header.querySelectorAll('a').forEach((element) => {
-      element.style.color = '#231815';
-      element.querySelectorAll('svg').forEach((svg) => {
-        svg.style.fill = '#231815';
-      });
-      element.addEventListener('mouseover', () => {
-        element.style.color = '#EA5514';
-        element.querySelectorAll('svg').forEach((svg) => {
-          svg.style.fill = '#EA5514';
-        });
-      });
-      element.addEventListener('mouseout', () => {
+    // スクロール位置に該当するセクションがない場合のデフォルト設定
+    if (!found) {
+      header.style.color = '#231815';
+      logo.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/logo_c.png")';
+      logoP.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/by_brawn.png")';
+      header.querySelectorAll('a').forEach((element) => {
         element.style.color = '#231815';
         element.querySelectorAll('svg').forEach((svg) => {
           svg.style.fill = '#231815';
         });
+        element.addEventListener('mouseover', () => {
+          element.style.color = '#EA5514';
+          element.querySelectorAll('svg').forEach((svg) => {
+            svg.style.fill = '#EA5514';
+          });
+        });
+        element.addEventListener('mouseout', () => {
+          element.style.color = '#231815';
+          element.querySelectorAll('svg').forEach((svg) => {
+            svg.style.fill = '#231815';
+          });
+        });
       });
+    }
+  } else {
+    // 画面幅が768px未満の場合でもロゴ画像の切り替えを実行
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top <= 0 && rect.bottom >= 0) {
+        if (section.classList.contains('dark')) {
+          logo.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/logo_white.png")';
+          logoP.style.backgroundImage =
+            'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/by-nagai-tamago.png?v=1718846692")';
+        } else {
+          logo.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/logo_c.png")';
+          logoP.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/by_brawn.png")';
+        }
+        found = true;
+      }
     });
+
+    if (!found) {
+      logo.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/logo_c.png")';
+      logoP.style.backgroundImage = 'url("https://cdn.shopify.com/s/files/1/0663/7794/1189/files/by_brawn.png")';
+    }
   }
 }
+
+// ページのロードやスクロールイベントで関数を実行
+window.addEventListener('load', updateHeaderColorBasedOnSection);
+window.addEventListener('scroll', updateHeaderColorBasedOnSection);
 
 function toggleActiveClassOnScroll() {
   // if (window.innerWidth < 768) {
   // }
 
   const header = document.querySelector('.header_o');
-  if (window.scrollY >= 800) {
+  if (window.scrollY >= 600) {
     header.classList.add('active');
   } else {
     header.classList.remove('active');
@@ -199,26 +234,26 @@ $(function () {
 //       valueElement.textContent = currentValue - 1;
 //   });
 // });
-document.addEventListener('DOMContentLoaded', function () {
-  const valueElement = document.querySelector('.value');
-  const incrementButton = document.querySelector('.increment');
-  const decrementButton = document.querySelector('.decrement');
+// document.addEventListener('DOMContentLoaded', function () {
+//   const valueElement = document.querySelector('.value');
+//   const incrementButton = document.querySelector('.increment');
+//   const decrementButton = document.querySelector('.decrement');
 
-  // 要素が存在する場合にのみ処理を実行する
-  if (valueElement && incrementButton && decrementButton) {
-    incrementButton.addEventListener('click', function () {
-      let currentValue = parseInt(valueElement.textContent, 10);
-      valueElement.textContent = currentValue + 1;
-    });
+//   // 要素が存在する場合にのみ処理を実行する
+//   if (valueElement && incrementButton && decrementButton) {
+//     incrementButton.addEventListener('click', function () {
+//       let currentValue = parseInt(valueElement.textContent, 10);
+//       valueElement.textContent = currentValue + 1;
+//     });
 
-    decrementButton.addEventListener('click', function () {
-      let currentValue = parseInt(valueElement.textContent, 10);
-      valueElement.textContent = currentValue - 1;
-    });
-  } else {
-    console.log('Counter elements are not found on this page.');
-  }
-});
+//     decrementButton.addEventListener('click', function () {
+//       let currentValue = parseInt(valueElement.textContent, 10);
+//       valueElement.textContent = currentValue - 1;
+//     });
+//   } else {
+//     console.log('Counter elements are not found on this page.');
+//   }
+// });
 
 //アコーディオンをクリックした時の動作
 $('.title').on('click', function () {

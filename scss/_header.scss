@@ -38,10 +38,20 @@
   h1{
     a{
       width: 217px;
+      // background: url() no-repeat;
+      background-size: contain;
+      height: 67px;
+      background-repeat: no-repeat;
       @include deviceTBSP{
         width: 147px;
+        height: 44px;
+
       }
     }
+    a:empty{
+      display: block !important;
+    }
+   
   }
   .header_nav,.nav_container,.shopbtn{
     display: flex;
@@ -112,6 +122,7 @@
     h1{
       a{
         width: 158px;
+        height: 50px;
       }
     }
     @include deviceTBSP{
@@ -323,14 +334,18 @@
   }
   p{
     width: 126px;
+    background-size: contain;
+    height: 15px;
+    background-repeat: no-repeat;
+  }
+  p:empty{
+    display: block !important;
   }
   @include deviceSP{
     p{
       width: 100px;
-      height: 19px;
-      img{
-        vertical-align: text-top;
-      }
+      height: 14px;
+      
     }
   }
 }
